@@ -1,0 +1,39 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.col{
+  margin: 5px;
+}
+
+input{
+  background-color: rgb(180, 187, 194);
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 42px;
+  width: 100%;
+  padding: 5px;
+  align-items: center;
+} 
+
+#adicionar{
+  margin-top: 10px;
+  height: 42px;
+  width: 100%;
+  background: #213547;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+button:hover{
+  filter: brightness(1.5);
+}
+
+.card {
+  padding: 20px;
+}

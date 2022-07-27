@@ -1,0 +1,14 @@
+.listUsers{
+    padding: 5px;
+    background-color: pink;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 5px;
+}
+
+p{
+    margin: 5px;
+    padding: 5px;
+    justify-content: center;
+}
