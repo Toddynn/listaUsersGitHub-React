@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import "./Card"
 import Card from './Card';
 
 function App() {
-  const [count, setUser] = useState(0);
+  const [user, setUser] = useState({name:'', avatar:''});
   const [pessoa, setPessoa] = useState('');
   const [pessoas, setPessoas] = useState([]);
 
@@ -20,9 +20,29 @@ function App() {
     setPessoas(prevState =>[...prevState, newPessoa])
   }
 
+  useEffect(() => {
+    async function fetchData(){
+      const response = await fetch('https://api.github.com/users/toddynn')
+      const data = await response.json();
+      console.log(data);
+          setUser({
+            name: data.name,
+            avatar: data.avatar_url,
+          });
+    }
+    fetchData();
+}, []);
+
   return (
     <div className="App">
-      <h1>Lista de presença</h1>
+      <header className='row'>
+        <h1 className='col-8'>Lista de presença</h1>
+        <div className='col-4'>
+          <strong>{user.name}</strong>
+          <img id="imgUser" src={user.avatar} alt="" ></img>
+        </div>
+      </header>
+      
       <div className='row'>
         <div className='col md-3'>
           <input type="text" id="nome" required placeholder='Digite o nome...' onChange={e => setPessoa(e.target.value)}></input>
@@ -34,7 +54,7 @@ function App() {
       <div className='row'>
         <div className='col md-3'>
           <hr />
-          <p>Usuários : {count}</p>
+          <p>Usuários : </p>
           <hr /> 
           <div className='col mx-auto'>
             {
@@ -45,7 +65,6 @@ function App() {
           </div>
         </div>
       </div>
-      
     </div>
   )
 }

@@ -9,6 +9,17 @@
   margin: 5px;
 }
 
+strong{
+  margin-right: 20px;
+}
+
+#imgUser{
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  box-shadow: 0 0 2em #213547;
+}
+
 input{
   background-color: rgb(180, 187, 194);
   border: none;
