@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import "./Card"
 import Card from './Card';
+import api from './api';
+
 
 function App() {
   const [user, setUser] = useState({name:'', avatar:''});
@@ -22,13 +24,17 @@ function App() {
 
   useEffect(() => {
     async function fetchData(){
-      const response = await fetch('https://api.github.com/users/toddynn')
-      const data = await response.json();
-      console.log(data);
-          setUser({
-            name: data.name,
-            avatar: data.avatar_url,
-          });
+      try {
+        const response = await api.get('/users/' + pessoa);
+        const data = await response.json();
+        console.log(data);
+            setUser({
+              name: data.name,
+              avatar: data.avatar_url,
+            });
+      } catch (error) {
+        console.log(error)
+      }
     }
     fetchData();
 }, []);
