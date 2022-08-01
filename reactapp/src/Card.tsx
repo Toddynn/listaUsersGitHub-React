@@ -1,10 +1,14 @@
 import "./Card.css";
 
-function Card(props){
+export type CardProps ={
+    name:string,
+    time:string;
+}
+
+export function Card(props: CardProps){
     return(
         <div className="listUsers">
             <p><strong>{props.name}</strong> - {props.time}</p>
         </div>
     )
 }
-export default Card;

@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import "./Card"
-import Card from './Card';
-import api from './api';
+import {Card, CardProps} from './Card';
 
+type APIresponse ={
+  name:string,
+  avatar_url:string;
+}
+
+type User ={
+  name:string,
+  avatar:string;
+}
 
 function App() {
-  const [user, setUser] = useState({name:'', avatar:''});
+  const [user, setUser] = useState<User>({} as User);
   const [pessoa, setPessoa] = useState('');
-  const [pessoas, setPessoas] = useState([]);
+  const [pessoas, setPessoas] = useState<CardProps[]>([]);
 
   function addPessoas(){
     const newPessoa ={
       name: pessoa,
-      hora: new Date().toLocaleTimeString("pt-br", {
+      time: new Date().toLocaleTimeString("pt-br", {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
@@ -24,20 +32,17 @@ function App() {
 
   useEffect(() => {
     async function fetchData(){
-      try {
-        const response = await api.get('/users/' + pessoa);
-        const data = await response.json();
-        console.log(data);
-            setUser({
-              name: data.name,
-              avatar: data.avatar_url,
-            });
-      } catch (error) {
-        console.log(error)
-      }
+      const response = await fetch(`https://api.github.com/users/toddynn`);
+      const data = await response.json() as APIresponse;
+      console.log(data);
+        setUser({
+          name: data.name,
+          avatar: data.avatar_url,
+        });
     }
     fetchData();
 }, []);
+
 
   return (
     <div className="App">
@@ -65,7 +70,7 @@ function App() {
           <div className='col mx-auto'>
             {
               pessoas.map(pessoa => (
-                <Card key={pessoa.hora} name={pessoa.name} time={pessoa.hora}></Card>
+                <Card key={pessoa.time} name={pessoa.name} time={pessoa.time}></Card>
               ))
             }
           </div>
