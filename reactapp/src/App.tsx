@@ -20,6 +20,8 @@ function App() {
   const [pessoa, setPessoa] = useState('');
   const [pessoas, setPessoas] = useState<CardProps[]>([]);
 
+  var contador = 0;
+
   const foto = document.getElementById("imgUser");
   const bug = document.getElementById("bi-bug-fill");
   const msgBug = document.getElementById("escondido");
