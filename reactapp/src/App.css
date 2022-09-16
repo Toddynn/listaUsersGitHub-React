@@ -20,6 +20,15 @@ strong{
   box-shadow: 0 0 2em #213547;
 }
 
+#bi-bug-fill{
+  font-size: 110px;
+  display: none;
+}
+
+#escondido{
+  display:none;
+}
+
 input{
   background-color: rgb(180, 187, 194);
   border: none;
