@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import "./Card.css";
 
 export type CardProps ={
@@ -8,7 +9,13 @@ export type CardProps ={
 export function Card(props: CardProps){
     return(
         <div className="listUsers">
-            <p><strong>{props.name}</strong> - {props.time}</p>
+            <div className="col-8">
+                <p><strong>{props.name}</strong> - {props.time}</p>
+            </div>
+            {/* <div className="col-4">
+                <button><i className="bi bi-trash"></i></button>
+            </div> */}
         </div>
     )
 }
+

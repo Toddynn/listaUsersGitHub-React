@@ -20,8 +20,6 @@ function App() {
   const [pessoa, setPessoa] = useState('');
   const [pessoas, setPessoas] = useState<CardProps[]>([]);
 
-  var contador = 0;
-
   const foto = document.getElementById("imgUser");
   const bug = document.getElementById("bi-bug-fill");
   const msgBug = document.getElementById("escondido");
@@ -43,9 +41,9 @@ function App() {
     setPessoas(prevState =>[...prevState, newPessoa]);
 
     async function fetchData(){
-      const response = await fetch(`https://api.github.com/users/${pessoa}`)
+      const response = await fetch(`https://api.github.com/users/${pessoa}`);
       const data = await response.json() as APIresponse;
-        console.log(data.avatar_url);
+      
       async function callBack(){ 
         setUser({
           name: data.name,
@@ -66,14 +64,14 @@ function App() {
       }
       user.name = data.name;
       user.login = data.login;
-    }
+      }
       fetchData();
   }
 
   return (
     <div className="App">
       <header className='row'>
-        <h1 className='col-8'>Lista de Usuários GitHub<i className="bi bi-github"></i></h1>
+        <h1 className='col-8'>Lista de Usuários <i className="bi bi-github"></i></h1>
         <div className='col-4'>
           <strong id="escondido">Usuário Não Encontrado</strong>
           <strong>{user.name}</strong>
