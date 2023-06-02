@@ -1,35 +1,17 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.col{
-  margin: 5px;
-}
-
 #imgUser{
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
   box-shadow: 0 0 2em #213547;
-}
-
-#bi-bug-fill{
-  font-size: 110px;
-  display: none;
-}
-
-#escondido{
-  display:none;
 }
 
 input{
   background-color: rgb(180, 187, 194);
   border: none;
   border-radius: 5px;
-  margin-top: 10px;
   height: 42px;
   width: 100%;
   padding: 5px;
@@ -37,7 +19,6 @@ input{
 } 
 
 #adicionar{
-  margin-top: 10px;
   height: 42px;
   width: 100%;
   background: #213547;
